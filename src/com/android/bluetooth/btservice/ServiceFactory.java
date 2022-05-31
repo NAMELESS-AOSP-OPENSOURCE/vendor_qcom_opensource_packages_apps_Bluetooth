@@ -69,22 +69,6 @@ public class ServiceFactory {
     }
 
     public Object getGroupService() {
-        if (mGroupService == null) {
-            Method mGetGroupService = null;
-            try {
-                Class<?> grpSvcCls =
-                        Class.forName("com.android.bluetooth.groupclient.GroupService");
-                if (grpSvcCls != null) {
-                    mGetGroupService = grpSvcCls.getMethod("getGroupService");
-                    if (mGetGroupService != null) {
-                        mGroupService = mGetGroupService.invoke(null);
-                    }
-                }
-            } catch (NoSuchMethodException|IllegalAccessException|
-                     InvocationTargetException|ClassNotFoundException e) {
-                 Log.e(TAG, "Exception in getGroupService: " + e);
-            }
-        }
         return mGroupService;
     }
 

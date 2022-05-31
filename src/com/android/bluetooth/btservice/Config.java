@@ -71,19 +71,6 @@ public class Config {
     private static ArrayList<Class> profiles = new ArrayList<>();
     private static boolean mIsA2dpSink, mIsBAEnabled, mIsSplitA2dpEnabled;
 
-    static {
-        mBCServiceClass = ReflectionUtils.getRequiredClass(
-                "com.android.bluetooth.bc.BCService");
-        mBroadcastClass = ReflectionUtils.getRequiredClass(
-                "com.android.bluetooth.broadcast.BroadcastService");
-        mPCServiceClass = ReflectionUtils.getRequiredClass(
-                "com.android.bluetooth.pc.PCService");
-        mCcServiceClass = ReflectionUtils.getRequiredClass(
-                "com.android.bluetooth.cc.CCService");
-        mGroupServiceClass = ReflectionUtils.getRequiredClass(
-                "com.android.bluetooth.groupclient.GroupService");
-    }
-
     private static class ProfileConfig {
         Class mClass;
         int mSupported;

@@ -59,58 +59,6 @@ public class ApmConstIntf {
     public static String CoordinatedAudioServiceName;
     public static String MusicPlayerControlServiceName;
 
-    static {
-        try {
-            StreamAudioService = Class.forName("com.android.bluetooth.apm.StreamAudioService");
-        } catch(ClassNotFoundException ex) {
-            Log.w(TAG, ex);
-        }
-
-        try {
-            if(StreamAudioService != null) {
-              LE_AUDIO_UNICAST = (Integer)StreamAudioService.getDeclaredField("LE_AUDIO_UNICAST").get(null);
-              COORDINATED_AUDIO_UNICAST = (Integer)StreamAudioService.getDeclaredField("COORDINATED_AUDIO_UNICAST").get(null);
-              CoordinatedAudioServiceName = (String)StreamAudioService.getDeclaredField("CoordinatedAudioServiceName").get(null);
-            }
-        } catch (NoSuchFieldException ex) {
-            Log.w(TAG, ex);
-        } catch (IllegalAccessException ex) {
-            Log.w(TAG, ex);
-        }
-
-        try {
-            if (CoordinatedAudioServiceName != null) {
-              CoordinatedAudioService = Class.forName(CoordinatedAudioServiceName);
-            }
-        } catch(ClassNotFoundException ex) {
-            Log.w(TAG, ex);
-        }
-
-        try {
-            MediaPlayerControlService = Class.forName("com.android.bluetooth.apm.MediaControlManager");
-        } catch(ClassNotFoundException ex) {
-            Log.w(TAG, ex);
-        }
-        try {
-            if (MediaPlayerControlService != null) {
-              MusicPlayerControlServiceName = (String)MediaPlayerControlService.getDeclaredField("MusicPlayerControlServiceName").get(null);
-              MUSIC_PLAYER_CONTROL = (Integer)MediaPlayerControlService.getDeclaredField("MUSIC_PLAYER_CONTROL").get(null);
-            }
-        } catch(IllegalAccessException ex) {
-            Log.w(TAG, ex);
-        } catch (NoSuchFieldException ex) {
-            Log.w(TAG, ex);
-        }
-
-        try {
-            if (MusicPlayerControlServiceName != null) {
-              MusicPlayerControlService = Class.forName(MusicPlayerControlServiceName);
-            }
-        } catch(ClassNotFoundException ex) {
-            Log.w(TAG, ex);
-        }
-   }
-
     public static class AudioFeatures {
         public static int CALL_AUDIO;
         public static int MEDIA_AUDIO;

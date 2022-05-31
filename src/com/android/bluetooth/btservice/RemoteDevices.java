@@ -876,22 +876,6 @@ final class RemoteDevices {
                             device.mRssi = val[0];
                             break;
                         case AbstractionLayer.BT_PROPERTY_REMOTE_DEVICE_GROUP:
-                            try {
-                                Method mLoadGroups = null;
-                                Class<?> grpSvcCls = Class.forName(
-                                    "com.android.bluetooth.groupclient.GroupService");
-                                if (grpSvcCls != null) {
-                                    mLoadGroups = grpSvcCls.getMethod(
-                                        "loadDeviceGroupFromBondedDevice",
-                                        BluetoothDevice.class, String.class);
-                                    if (mLoadGroups != null) {
-                                        mLoadGroups.invoke(null, bdDevice, new String(val));
-                                    }
-                                }
-                            } catch (NoSuchMethodException|IllegalAccessException|
-                                     InvocationTargetException|ClassNotFoundException e) {
-                                 Log.e(TAG, "Exception in reading groups: " + e);
-                            }
                             break;
                         case AbstractionLayer.BT_PROPERTY_GROUP_EIR_DATA:
                             Object mGroupService = new ServiceFactory().getGroupService();
